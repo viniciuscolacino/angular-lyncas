@@ -1,0 +1,11 @@
+<div class="d-flex" role="group">
+  <button type="button" class="nav-button dashboard" [routerLink]="['/']" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon fontSet="material-icons">grid_view</mat-icon>
+    Dashboard</button>
+
+  <button type="button" class="nav-button delivery" [routerLink]="['/delivery']" routerLinkActive="active">
+    <mat-icon fontSet="material-icons">local_shipping</mat-icon>
+    Delivery
+  </button>
+</div>

@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+@import url(app/styles/_colors.scss);
+@import url(app/styles/_typography.scss);
+
+html, body{
+  height: 100%;
+}
+
+header, footer{
+  background-color: var(--color-gray-900);
+}
+
+html, body {
+  height: 100%;
+}
+
+.success{color: var(--color-green-700);}
+.warning{color: var(--color-orange-600);}
+.error{color: var(--color-red-700);}
+
+
+.custom-mat-table{
+  thead{
+    tr{
+      background: var(--color-gray-700);
+      color: var(--color-white);
+    }
+  }
+
+  tbody{
+    tr:nth-child(odd) {
+      background: var(--color-white);
+    }
+
+    tr:nth-child(even) {
+      background: var(--color-gray-50);
+    }
+
+    td{
+      border-color: var(--color-gray-200);
+    }
+  }
+}
+
+.mat-mdc-paginator.custom-mat-paginator{
+  background: var(--color-gray-700);
+  color: var(--color-white);
+
+  button{
+    svg{
+      fill: var(--color-white);
+    }
+  }
+}
+
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

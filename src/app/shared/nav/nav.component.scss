@@ -1,0 +1,22 @@
+:host{
+  .nav-button{
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+
+    .mat-icon{
+      margin-right: 5px;
+    }
+
+    &.dashboard{
+      margin-right: 20px;
+    }
+
+    &.active{
+      color: var(--color-blue-300);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="container mb-3">
+  <div class="row g-4 m-0">
+    <div class="col-12">
+      <h1>Dashboard</h1>
+    </div>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Entregas por Motoristas">
+      <div class="row g-4 m-0">
+        @for(driver of drivers$(); track driver){
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+          <app-driver [driver]="driver"></app-driver>
+        </div>
+        }
+      </div>
+    </mat-tab>
+
+
+    <mat-tab label="Entregas por Bairro">
+      <div class="row g-4 m-0">
+        @for(neighborhood of neighborhoods$(); track neighborhood){
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+          <app-neighborhood [neighborhood]="neighborhood"></app-neighborhood>
+        </div>
+        }
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
