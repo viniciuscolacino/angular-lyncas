@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DriverComponent } from './driver.component';
+import { provideRouter } from '@angular/router';
 
 describe('DriverComponent', () => {
   let component: DriverComponent;
@@ -8,9 +8,10 @@ describe('DriverComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DriverComponent]
+      imports: [DriverComponent],
+      providers: [provideRouter([])],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DriverComponent);
     component = fixture.componentInstance;
@@ -18,6 +19,8 @@ describe('DriverComponent', () => {
   });
 
   it('should create', () => {
+    console.log(component);
     expect(component).toBeTruthy();
   });
+
 });

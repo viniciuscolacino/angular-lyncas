@@ -1,27 +1,28 @@
-# Lyncas
+# Instalação
+`npm install`
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+# Executar o Projeto
+Primeiro, é necessário rodar a fake api. No diretório raiz/json-server, execute
+`json-server --watch data.json`
+A api deve todar na porta 3000.
 
-## Development server
+Após isso, execute o projeto
+`ng serve`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Funcionalidades
+Busquei cumprir tudo o que foi proposto, entretanto tomei a liberdade de modificar algumas coisas. Acredito que o resultado ficou mais dinâmico e agradável, e espero que isso não afete a avaliação de minhas habilidades.
 
-## Code scaffolding
+## Dashboard
+Ao invés de exibir 3 painéis (com três tabelas), simplifiquei criando dois painéis: um para motoristas (que é referente às informações dos painéis 1 e 2 solicitados), e um para pedidos organizados por bairro.
+Preferi fazer esse Dashboard com cards, para uma melhor visualização e responsividade, e deixei a tabela para a View "Delivery"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Delivery
+A tabela que mostra todos os registros, e permite filtros por motorista e/ou status.
 
-## Build
+# Layout
+Fiz um layout simples, porém bonito e funcional.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
 
 ## Running unit tests
-
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

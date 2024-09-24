@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Order, OrderStatusEnum } from 'app/core/models/order';
@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Driver } from 'app/core/models/driver';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-delivery',
@@ -23,10 +24,10 @@ import { Driver } from 'app/core/models/driver';
     ReactiveFormsModule
   ],
   templateUrl: './delivery.component.html',
-  styleUrl: './delivery.component.scss'
+  styleUrl: './delivery.component.scss',
 })
 
-export default class DeliveryComponent implements OnInit, AfterViewInit {
+export default class DeliveryComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   #fb = inject(FormBuilder);
 
@@ -36,6 +37,7 @@ export default class DeliveryComponent implements OnInit, AfterViewInit {
   originalDataSource = new MatTableDataSource<Order>([]);
   status = OrderStatusEnum;
   drivers$ = signal<Array<Driver>>([]);
+  private destroy$ = new Subject<void>();
 
   public profileForm = this.#fb.group({
     driver: [''],
@@ -44,9 +46,11 @@ export default class DeliveryComponent implements OnInit, AfterViewInit {
 
 
   private initForm(): void {
-    this.profileForm.valueChanges.subscribe(() => {
-      this.filterData();
-    })
+    this.profileForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.filterData();
+      })
   }
 
   public filterData() {
@@ -60,24 +64,28 @@ export default class DeliveryComponent implements OnInit, AfterViewInit {
   }
 
   public getData(): void {
-    this.#dataService.getData().subscribe({
-      next: (next) => {
-        this.dataSource.data = [...next];
-        this.originalDataSource.data = [...next];
-      },
-      error: () => {
-        console.log('not found');
-      }
-    });
+    this.#dataService.getData()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (next) => {
+          this.dataSource.data = [...next];
+          this.originalDataSource.data = [...next];
+        },
+        error: () => {
+          console.log('not found');
+        }
+      });
 
-    this.#dataService.getDriverInfo().subscribe({
-      next: (next) => {
-        this.drivers$.set(next);
-      },
-      error: () => {
-        console.log('not found');
-      }
-    });
+    this.#dataService.getDriverInfo()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (next) => {
+          this.drivers$.set(next);
+        },
+        error: () => {
+          console.log('not found');
+        }
+      });
   }
 
   ngAfterViewInit() {
@@ -87,6 +95,11 @@ export default class DeliveryComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getData();
     this.initForm();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

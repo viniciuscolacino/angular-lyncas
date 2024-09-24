@@ -1,10 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/scss/bootstrap';
 @import url(app/styles/_colors.scss);
 @import url(app/styles/_typography.scss);
 
 html, body{
   height: 100%;
+  margin: 0;
 }
 
 header, footer{
@@ -53,5 +53,3 @@ html, body {
     }
   }
 }
-
-//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
