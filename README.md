@@ -4,13 +4,13 @@
 # Executar o Projeto
 Primeiro, é necessário rodar a fake api. No diretório raiz/json-server, execute
 `json-server --watch data.json`
-A api deve todar na porta 3000.
+A api deve rodar na porta 3000.
 
 Após isso, execute o projeto
 `ng serve`
 
 # Testes unitários
-Para executar os testes
+Para executar os testes:
 `ng test`
 
 # Funcionalidades
@@ -26,7 +26,6 @@ A tabela que mostra todos os registros, e permite filtros por motorista e/ou sta
 # Layout
 Fiz um layout simples, porém bonito e funcional.
 
-
-
-## Running unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Bootstrap, Angular Material e CSS
+Utilizei Angular Material nos componentes, Bootstrap para a responsividade e diagramação, e também escrevi um pouco de CSS para demonstrar meu conhecimento.
+ 
