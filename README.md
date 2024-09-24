@@ -9,6 +9,10 @@ A api deve todar na porta 3000.
 Após isso, execute o projeto
 `ng serve`
 
+# Testes unitários
+Para executar os testes
+`ng test`
+
 # Funcionalidades
 Busquei cumprir tudo o que foi proposto, entretanto tomei a liberdade de modificar algumas coisas. Acredito que o resultado ficou mais dinâmico e agradável, e espero que isso não afete a avaliação de minhas habilidades.
 

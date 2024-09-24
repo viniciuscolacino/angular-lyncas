@@ -18,7 +18,14 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Deveria criar o componente', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Deve conter o logo da Lyncas', (() => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    expect(compiled.querySelector('img')?.src).toContain('lyncas');
+  }));
 });

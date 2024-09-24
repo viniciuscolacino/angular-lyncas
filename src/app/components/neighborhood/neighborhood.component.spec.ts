@@ -10,14 +10,14 @@ describe('NeighborhoodComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NeighborhoodComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(NeighborhoodComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Deveria criar o componente', () => {
     expect(component).toBeTruthy();
   });
 });

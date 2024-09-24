@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Driver } from 'app/core/models/driver';
-import { Subject, takeUntil } from 'rxjs';
+import { forkJoin, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-delivery',
@@ -64,28 +64,21 @@ export default class DeliveryComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   public getData(): void {
-    this.#dataService.getData()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (next) => {
-          this.dataSource.data = [...next];
-          this.originalDataSource.data = [...next];
-        },
-        error: () => {
-          console.log('not found');
-        }
-      });
+    const data = this.#dataService.getData();
+    const drivers = this.#dataService.getDriverInfo();
 
-    this.#dataService.getDriverInfo()
+    forkJoin([data, drivers])
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (next) => {
-          this.drivers$.set(next);
+        next: ([data, drivers]) => {
+          this.dataSource.data = [...data];
+          this.originalDataSource.data = [...data];
+          this.drivers$.set(drivers);
         },
         error: () => {
           console.log('not found');
         }
-      });
+      })
   }
 
   ngAfterViewInit() {

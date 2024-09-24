@@ -6,6 +6,8 @@
     color: var(--color-white);
     display: flex;
     justify-content: center;
+    opacity: .6;
+    transition: all .2s;
 
     .mat-icon{
       margin-right: 5px;
@@ -15,8 +17,9 @@
       margin-right: 20px;
     }
 
-    &.active{
-      color: var(--color-blue-300);
+    &.active, &:hover{
+      opacity: 1;
+      transition: all .2s;
     }
   }
 }

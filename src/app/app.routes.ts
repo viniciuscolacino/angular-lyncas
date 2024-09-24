@@ -11,5 +11,11 @@ export const routes: Routes = [
     path: 'delivery',
     title: 'Delivery',
     loadComponent: () => import('@pages/delivery/delivery.component'),
+  },
+
+  {
+    path: '**',
+    title: 'Dashboard',
+    loadComponent: () => import('@pages/dashboard/dashboard.component'),
   }
 ];

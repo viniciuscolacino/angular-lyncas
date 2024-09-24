@@ -22,7 +22,14 @@ describe('DeliveryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Deveria criar o componente', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Deve possuir a tag H1', (() => {
+    const fixture = TestBed.createComponent(DeliveryComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Delivery');
+  }));
 });

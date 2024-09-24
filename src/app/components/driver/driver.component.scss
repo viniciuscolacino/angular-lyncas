@@ -1,14 +1,30 @@
 :host{
-  img{
-    border: solid 2px var(--color-gray-100);
-    border-radius: 100%;
-    display: block;
-    margin: 0 auto -30px;
-    padding: 2px;
-    width: 80%;
+  .image-container{
+    img{
+      border: solid 2px var(--color-gray-100);
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto -30px;
+      padding: 2px;
+      width: 80%;
+
+      filter: grayscale(.5);
+        height: auto !important;
+        object-fit: contain;
+        position: static !important;
+        transition: all .2s;
+    }
+
+    &:hover{
+      img{
+        filter: grayscale(0);
+        transform: scale(1.1);
+        transition: all .2s;
+      }
+    }
   }
 
-  div{
+  div.driver-info{
     border: solid 1px var(--color-gray-100);
     border-radius: 10px;
     padding: 40px 1rem 1rem;

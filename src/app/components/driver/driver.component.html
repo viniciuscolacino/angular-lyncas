@@ -1,6 +1,6 @@
 @if(driver){
-<img [src]="driver.image">
-<div>
+<div class="image-container"><img [src]="driver.image"></div>
+<div class="driver-info">
   <h5>{{ driver.name }}</h5>
   <span class="success">Entregues: {{ driver.delivered }} / {{ driver.total }}</span><br>
   <span class="error">Insucesso: {{ driver.unsuccessful }} / {{ driver.total }}</span>

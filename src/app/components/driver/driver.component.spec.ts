@@ -18,9 +18,10 @@ describe('DriverComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    console.log(component);
+  it('Deveria criar o componente', () => {
     expect(component).toBeTruthy();
   });
+
+
 
 });

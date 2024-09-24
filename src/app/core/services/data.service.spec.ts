@@ -12,7 +12,19 @@ describe('DataService', () => {
     service = TestBed.inject(DataService);
   });
 
-  it('should be created', () => {
+  it('Deveria criar o Serviço', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('Teste do getData', () => {
+    expect(service.getData()).toBeTruthy();
+  });
+
+  it('Teste do getDriverInfo', () => {
+    expect(service.getDriverInfo()).toBeTruthy();
+  });
+
+  it('Teste do getNeighborhoodInfo', () => {
+    expect(service.getNeighborhoodInfo()).toBeTruthy();
   });
 });
