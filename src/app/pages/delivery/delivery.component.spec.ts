@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import DeliveryComponent from './delivery.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DeliveryComponent', () => {
   let component: DeliveryComponent;
@@ -9,11 +9,10 @@ describe('DeliveryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeliveryComponent],
+      imports: [DeliveryComponent, BrowserAnimationsModule],
       providers: [
         HttpClient,
         HttpHandler,
-        provideAnimations,
       ]
     })
       .compileComponents();

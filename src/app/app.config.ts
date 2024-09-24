@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withRouterConfig } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -22,7 +22,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(),
     provideAnimations(),
-    //importProvidersFrom([BrowserAnimationsModule])
-    //provideAnimationsAsync()
+    provideAnimationsAsync()
   ]
 };
